@@ -1,5 +1,7 @@
 package pboif2.pkg10119065.latihan20.latihantargetsaldotabungan;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Scanner;
 
 
@@ -15,6 +17,10 @@ public class PBOIF210119065Latihan20LatihanTargetSaldoTabungan {
     
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+        formatRp.setCurrencySymbol("Rp. ");
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
         int saldo,i;
         i = 1;
         System.out.print("Saldo Awal: Rp. ");
@@ -27,7 +33,7 @@ public class PBOIF210119065Latihan20LatihanTargetSaldoTabungan {
         saldo = saldoAwal;
         
         while(saldo < saldoTarget){
-            System.out.println("Saldo di bulan ke-"+ i++ +" "+hitungTargetSaldo(saldo,bunga));
+            System.out.println("Saldo di bulan ke-"+ i++ +" "+kursIndonesia.format(hitungTargetSaldo(saldo,bunga)));
             saldo = hitungTargetSaldo(saldo,bunga);
         }
         
